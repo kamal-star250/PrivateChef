@@ -1,12 +1,17 @@
 import * as React from 'react';
+/**
+ * Import navigation releted components.
+ */
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-// import all app screens
+/**
+ * Here we import all screen's form screen folder.
+ */
 import {
   SignupInitialScreen,
   SignupFirstStep,
   SignupSecondStep,
+  SignupThirdStep,
 } from '../screens';
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +36,11 @@ const AppNavigation = () => {
         <Stack.Screen
           name="SignupSecondStep"
           component={SignupSecondStep}
+          options={{gestureEnabled: false}}
+        />
+        <Stack.Screen
+          name="SignupThirdStep"
+          component={SignupThirdStep}
           options={{gestureEnabled: false}}
         />
       </Stack.Navigator>

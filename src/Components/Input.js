@@ -3,13 +3,23 @@ import {Text, StyleSheet, TextInput, View} from 'react-native';
 import {Styles} from './CommanStyle';
 import {Fonts} from './Fonts';
 
-const Input = ({placeholder, multiline, onChangeText, height, ...props}) => {
+const Input = ({
+  placeholder,
+  multiline,
+  keyboardType,
+  onChangeText,
+  height,
+  maxLength,
+  ...props
+}) => {
   return (
     <View style={{width: '100%', height: 70}}>
       <TextInput
         onChangeText={onChangeText}
         multiline={multiline ? true : false}
         placeholder={placeholder}
+        keyboardType={keyboardType}
+        maxLength={maxLength}
         placeholderTextColor={'#9CA7B7'}
         style={[
           styles.textInputStyle,

@@ -1,10 +1,14 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Modal from 'react-native-modal';
-// import custome files
+/**
+ *  All custome components and styling are imported here
+ */
 import Button from './Button';
 import {Fonts} from './Fonts';
-// import SVG files
+/**
+ * All SVG icon's are imported here
+ */
 import LocationPin from '../Assets/Icon/LocationPin.svg';
 
 const EnableLocationModal = ({modalState, closeModal}) => {

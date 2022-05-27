@@ -7,11 +7,15 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
-// import styles and another components
+/**
+ *  All custome components and styling are imported here
+ */
 import {Styles} from '../../Components/CommanStyle';
 import {Fonts} from '../../Components/Fonts';
 import Button from '../../Components/Button';
-// import svg files
+/**
+ * All SVG icon's are imported here
+ */
 import PlatterIcon from '../../Assets/Icon/Platter.svg';
 import WelcomeIcon from '../../Assets/Icon/Welcome.svg';
 import RightIcon from '../../Assets/Icon/RightIcon.svg';
@@ -20,9 +24,12 @@ import RightIcon from '../../Assets/Icon/RightIcon.svg';
 const {height} = Dimensions.get('window');
 
 const SignupInitialScreen = ({navigation}) => {
-  const [isChef, setIsChef] = useState(true); //
+  /**
+   * isChef variabale is defined to check user is Chef or user need a Chef
+   */
+  const [isChef, setIsChef] = useState(true);
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#E5E5E5'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <View style={Styles.containerStyle}>
         <Text style={Styles.headingTextStyle}>
           Let’s get you to the right place.
@@ -36,7 +43,7 @@ const SignupInitialScreen = ({navigation}) => {
               setIsChef(!isChef);
             }}
             activeOpacity={0.5}
-            style={{width: '47%', height: '100%', alignItems: 'center'}}>
+            style={styles.boxContainer}>
             <View style={styles.boxStyle}>
               {isChef ? (
                 <View style={styles.circle}>
@@ -55,7 +62,7 @@ const SignupInitialScreen = ({navigation}) => {
               setIsChef(!isChef);
             }}
             activeOpacity={0.5}
-            style={{width: '47%', height: '100%', alignItems: 'center'}}>
+            style={styles.boxContainer}>
             <View style={[styles.boxStyle, {backgroundColor: '#E69394'}]}>
               {!isChef ? (
                 <View style={styles.circle}>
@@ -69,7 +76,7 @@ const SignupInitialScreen = ({navigation}) => {
             <Text style={styles.chefTextStyle}>I need a chef</Text>
           </TouchableOpacity>
         </View>
-        {/* Button container */}
+        {/* Next button component  */}
         <View style={styles.buttonContainer}>
           <Button
             title="Next"
@@ -111,12 +118,16 @@ const styles = StyleSheet.create({
     height: height / 2.6,
     paddingVertical: 20,
   },
+  boxContainer: {
+    width: '47%',
+    height: '100%',
+    alignItems: 'center',
+  },
   boxStyle: {
     width: '100%',
     height: '100%',
     backgroundColor: '#6DA588',
-    borderRadius: 6,
-    // position: 'absolute',
+    borderRadius: 5,
   },
   PlatterContainer: {
     flex: 1,

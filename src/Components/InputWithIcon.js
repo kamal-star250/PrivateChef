@@ -9,8 +9,34 @@ const InputWithIcon = ({
   placeholderTextColor,
   onChangeText,
   secureTextEntry,
+  maxLength,
+  editable,
+  value,
+  ...props
 }) => {
-  return <View style={{width: '100%', height: 70}}></View>;
+  return (
+    <View
+      style={{
+        width: '100%',
+        height: 70,
+      }}>
+      <View style={styles.inputContainer} {...props}>
+        {leftSideIcon}
+        <TextInput
+          editable={editable}
+          maxLength={maxLength}
+          value={value}
+          secureTextEntry={secureTextEntry}
+          onChangeText={onChangeText}
+          placeholder={placeholder}
+          placeholderTextColor={'#9CA7B7'}
+          style={styles.textInputStyle}
+        />
+
+        {rightSideIcon}
+      </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -28,7 +54,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#EEF2FB',
     borderRadius: 5,
-    paddingHorizontal: 15,
     color: '#242424',
     fontFamily: Fonts.regular,
     fontWeight: '400',

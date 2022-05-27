@@ -5,7 +5,7 @@ export const Styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
     padding: 15,
-    backgroundColor: '#E5E5E5',
+    backgroundColor: '#fff',
   },
   headingTextStyle: {
     fontFamily: Fonts.regular,

@@ -8,39 +8,51 @@ import {
   ImageBackground,
 } from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-// import custome files
+/**
+ *  All custome components and styling are imported here
+ */
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
 import StepsComponent from './StepsComponent';
 import {Fonts} from '../../Components/Fonts';
 import {Styles} from '../../Components/CommanStyle';
 import EnableLocationModal from '../../Components/EnableLocationModal';
-// import SVG files
+/**
+ * All SVG icon's are imported here.
+ */
 import LocationPin from '../../Assets/Icon/LocationPin.svg';
 
 const SignupFirstStep = ({navigation}) => {
-  ///  inputs variable
+  /**
+   * Here are some variables declared to store the text-input values.
+   */
   const [streetAddess, setStreetAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [ZipCode, setZipCode] = useState('');
+  /**
+   *  isFocus variable is declared to check which TextInput is on Focus
+   * locationPermissionModal variable is declared to show or hide the permission modal.
+   */
   const [isFocus, setIsFocus] = useState('');
-  //
   const [locationPermissionModal, setLocationPermissionModal] = useState(false);
 
   /**
-   * function to handle modal
+   * closeModal function  is declared to  close the locationPermissionModal modal.
    */
   const closeModal = () => {
     setLocationPermissionModal(false);
   };
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#E5E5E5'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <EnableLocationModal
         modalState={locationPermissionModal}
         closeModal={closeModal}
       />
       <View style={Styles.containerStyle}>
+        {/**
+         * StepsComponent is a seprate component to manage the form steps
+         */}
         <StepsComponent activeStep={1} />
         <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
           <Text style={Styles.headingTextStyle}>
@@ -60,7 +72,10 @@ const SignupFirstStep = ({navigation}) => {
               <Text style={styles.mapTextStyles}>Maps View</Text>
             </TouchableOpacity>
           </View>
-          {/* map area */}
+          {/**
+           * Map area
+           * */}
+
           <TouchableOpacity onPress={() => setLocationPermissionModal(true)}>
             <ImageBackground
               borderRadius={5}
@@ -73,7 +88,9 @@ const SignupFirstStep = ({navigation}) => {
           <Text style={[styles.textStyle, {paddingVertical: 20}]}>
             Enter Maunually
           </Text>
-          {/* inputs area start  */}
+          {/**
+           * TextInput area stared.
+           */}
           <Text style={Styles.inputTitleStyle}>Street Addres</Text>
           <Input
             multiline
@@ -104,7 +121,7 @@ const SignupFirstStep = ({navigation}) => {
             borderWidth={isFocus == 'state' ? 0.5 : 0}
             borderColor={isFocus == 'state' ? '#6DA588' : '#EEF2FB'}
             onChangeText={text => {
-              text;
+              setState(text);
             }}
           />
           <Text style={Styles.inputTitleStyle}>Zip</Text>
@@ -115,7 +132,7 @@ const SignupFirstStep = ({navigation}) => {
             borderWidth={isFocus == 'zip' ? 0.5 : 0}
             borderColor={isFocus == 'zip' ? '#6DA588' : '#EEF2FB'}
             onChangeText={text => {
-              setStreetAddress(text);
+              setZipCode(text);
             }}
           />
           <View style={{width: '100%', alignItems: 'center', marginTop: 25}}>
