@@ -10,7 +10,7 @@ import {
 /**
  *  All custome components and styling are imported here.
  */
-import Button from '../../Components/Button';
+import {Button} from '../../Components';
 import {Styles} from '../../Components/CommanStyle';
 import {Fonts} from '../../Components/Fonts';
 import StepsComponent from './StepsComponent';
@@ -52,7 +52,7 @@ const SignupThirdStep = ({navigation}) => {
             <Button
               title="Next"
               onPress={() => {
-                navigation.navigate('SignupThirdStep');
+                navigation.navigate('SignupFourthStep');
               }}
             />
           </View>

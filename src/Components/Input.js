@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text, StyleSheet, TextInput, View} from 'react-native';
-import {Styles} from './CommanStyle';
 import {Fonts} from './Fonts';
 
 const Input = ({
@@ -46,4 +45,4 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
-export default Input;
+export {Input};

@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
 });
-export default EnableLocationModal;
+export {EnableLocationModal};

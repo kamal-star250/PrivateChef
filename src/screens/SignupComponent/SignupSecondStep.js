@@ -15,13 +15,11 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 /**
  *  All custome components and styling are imported here
  */
-import Input from '../../Components/Input';
-import Button from '../../Components/Button';
 import StepsComponent from './StepsComponent';
 import {Fonts} from '../../Components/Fonts';
 import {Styles} from '../../Components/CommanStyle';
+import {Input, Button, InputWithIcon} from '../../Components';
 import CountryList from './CountryList';
-import InputWithIcon from '../../Components/InputWithIcon';
 /**
  * All SVG icon's are imported here.
  */

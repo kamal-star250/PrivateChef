@@ -12,6 +12,8 @@ import {
   SignupFirstStep,
   SignupSecondStep,
   SignupThirdStep,
+  SignupFourthStep,
+  LoadingScreen,
 } from '../screens';
 
 const Stack = createNativeStackNavigator();
@@ -41,6 +43,16 @@ const AppNavigation = () => {
         <Stack.Screen
           name="SignupThirdStep"
           component={SignupThirdStep}
+          options={{gestureEnabled: false}}
+        />
+        <Stack.Screen
+          name="SignupFourthStep"
+          component={SignupFourthStep}
+          options={{gestureEnabled: false}}
+        />
+        <Stack.Screen
+          name="LoadingScreen"
+          component={LoadingScreen}
           options={{gestureEnabled: false}}
         />
       </Stack.Navigator>

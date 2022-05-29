@@ -11,12 +11,10 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 /**
  *  All custome components and styling are imported here
  */
-import Input from '../../Components/Input';
-import Button from '../../Components/Button';
 import StepsComponent from './StepsComponent';
 import {Fonts} from '../../Components/Fonts';
 import {Styles} from '../../Components/CommanStyle';
-import EnableLocationModal from '../../Components/EnableLocationModal';
+import {Input, Button, EnableLocationModal} from '../../Components';
 /**
  * All SVG icon's are imported here.
  */

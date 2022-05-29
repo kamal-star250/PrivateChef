@@ -12,7 +12,7 @@ import {
  */
 import {Styles} from '../../Components/CommanStyle';
 import {Fonts} from '../../Components/Fonts';
-import Button from '../../Components/Button';
+import {Button} from '../../Components';
 /**
  * All SVG icon's are imported here
  */
