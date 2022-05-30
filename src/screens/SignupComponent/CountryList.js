@@ -18,19 +18,19 @@ const CountryList = [
     countryFlag: require('../../Assets/Images/afghanistan.png'),
   },
   {
-    id: 0,
+    id: 3,
     countryCode: '+62',
     countryName: 'Indonesia',
     countryFlag: require('../../Assets/Images/Indonesia.png'),
   },
   {
-    id: 1,
+    id: 4,
     countryCode: '+389',
     countryName: 'Republic of macedonia',
     countryFlag: require('../../Assets/Images/macedonia.png'),
   },
   {
-    id: 2,
+    id: 5,
     countryCode: '+93',
     countryName: 'Afghanistan',
     countryFlag: require('../../Assets/Images/afghanistan.png'),

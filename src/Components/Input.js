@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 import {Fonts} from './Fonts';
 
 const Input = ({
@@ -9,40 +9,54 @@ const Input = ({
   onChangeText,
   height,
   maxLength,
+  editable,
+  secureTextEntry,
+  rightSideIcon,
+  value,
   ...props
 }) => {
   return (
     <View style={{width: '100%', height: 70}}>
-      <TextInput
-        onChangeText={onChangeText}
-        multiline={multiline ? true : false}
-        placeholder={placeholder}
-        keyboardType={keyboardType}
-        maxLength={maxLength}
-        placeholderTextColor={'#9CA7B7'}
-        style={[
-          styles.textInputStyle,
-          {
-            height: height ? height : 'auto',
-          },
-        ]}
-        {...props}
-      />
+      <View style={styles.inputContainer} {...props}>
+        <TextInput
+          editable={editable}
+          maxLength={maxLength}
+          value={value}
+          multiline={multiline}
+          keyboardType={keyboardType}
+          secureTextEntry={secureTextEntry}
+          onChangeText={onChangeText}
+          placeholder={placeholder}
+          placeholderTextColor={'#9CA7B7'}
+          style={styles.textInputStyle}
+        />
+        {rightSideIcon}
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  textInputStyle: {
-    minHeight: 55,
+  inputContainer: {
+    height: 55,
     width: '100%',
     backgroundColor: '#EEF2FB',
     borderRadius: 5,
     paddingHorizontal: 15,
+    paddingVertical: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  textInputStyle: {
+    flex: 1,
+    backgroundColor: '#EEF2FB',
+    borderRadius: 5,
     color: '#242424',
     fontFamily: Fonts.regular,
     fontWeight: '400',
     fontSize: 14,
+    paddingVertical: 2,
   },
 });
 export {Input};

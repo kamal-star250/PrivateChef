@@ -29,7 +29,7 @@ const SignupFirstStep = ({navigation}) => {
   const [state, setState] = useState('');
   const [ZipCode, setZipCode] = useState('');
   /**
-   *  isFocus variable is declared to check which TextInput is on Focus
+   * isFocus variable is declared to check which TextInput is on Focus
    * locationPermissionModal variable is declared to show or hide the permission modal.
    */
   const [isFocus, setIsFocus] = useState('');
@@ -91,7 +91,7 @@ const SignupFirstStep = ({navigation}) => {
            */}
           <Text style={Styles.inputTitleStyle}>Street Addres</Text>
           <Input
-            multiline
+            multiline={true}
             placeholder="Your address"
             onFocus={() => setIsFocus('address')}
             borderWidth={isFocus == 'address' ? 0.5 : 0}
@@ -102,7 +102,6 @@ const SignupFirstStep = ({navigation}) => {
           />
           <Text style={Styles.inputTitleStyle}>City</Text>
           <Input
-            multiline
             placeholder="City"
             onFocus={() => setIsFocus('city')}
             borderWidth={isFocus == 'city' ? 0.5 : 0}
@@ -113,7 +112,6 @@ const SignupFirstStep = ({navigation}) => {
           />
           <Text style={Styles.inputTitleStyle}>State</Text>
           <Input
-            multiline
             placeholder="Your state"
             onFocus={() => setIsFocus('state')}
             borderWidth={isFocus == 'state' ? 0.5 : 0}
@@ -124,7 +122,6 @@ const SignupFirstStep = ({navigation}) => {
           />
           <Text style={Styles.inputTitleStyle}>Zip</Text>
           <Input
-            multiline
             placeholder="Your zip"
             onFocus={() => setIsFocus('zip')}
             borderWidth={isFocus == 'zip' ? 0.5 : 0}

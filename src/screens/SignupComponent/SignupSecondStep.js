@@ -18,7 +18,7 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import StepsComponent from './StepsComponent';
 import {Fonts} from '../../Components/Fonts';
 import {Styles} from '../../Components/CommanStyle';
-import {Input, Button, InputWithIcon} from '../../Components';
+import {Input, Button, InputErros} from '../../Components';
 import CountryList from './CountryList';
 /**
  * All SVG icon's are imported here.
@@ -39,6 +39,10 @@ const SignupSecondStep = ({navigation}) => {
   const [dateOfBirth, setDateOfBirth] = useState();
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
+
+  const [passwordError, setPasswordError] = useState(false);
+  const [rePasswordError, setRePasswordError] = useState(false);
+  const [passwordNotMatch, setPasswordNotMatch] = useState(false);
   /**
    * isFocus variable is declared to check which TextInput is on Focus
    * ispassword secure and reTypePasswordSecure variables are declared to show or hide the password in input fields
@@ -66,6 +70,21 @@ const SignupSecondStep = ({navigation}) => {
     setDateOfBirth(changeFormait);
     setDatePickerVisibility(false);
   };
+  /**
+   * formValidation function  is declared to validate empty text-field
+   */
+  const formValidation = () => {
+    if (password == '') {
+      setPasswordError(true);
+    } else if (rePassword == '') {
+      setRePasswordError(true);
+    } else if (password != rePassword) {
+      setPasswordNotMatch(true);
+    } else {
+      setPasswordNotMatch(false);
+      navigation.navigate('SignupThirdStep');
+    }
+  };
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
@@ -91,7 +110,6 @@ const SignupSecondStep = ({navigation}) => {
           <Text style={[Styles.subHeadingStyle, {color: '#242424'}]}>
             Connect with chefs and post gigs. It will just take a minute!
           </Text>
-
           {/**
            * First name TextInput with title.
            */}
@@ -213,22 +231,20 @@ const SignupSecondStep = ({navigation}) => {
           />
           {/* Date of birth */}
           <Text style={Styles.inputTitleStyle}>Date of birth</Text>
-          <InputWithIcon
-            maxLength={10}
-            placeholder={'mm/dd/yy'}
-            editable={false}
-            value={dateOfBirth}
-            rightSideIcon={
-              <TouchableOpacity onPress={() => setDatePickerVisibility(true)}>
-                <Calendar width={20} height={15} />
-              </TouchableOpacity>
-            }
-          />
+          <TouchableOpacity onPress={() => setDatePickerVisibility(true)}>
+            <Input
+              maxLength={10}
+              editable={false}
+              value={dateOfBirth}
+              placeholder={'mm/dd/yy'}
+              rightSideIcon={<Calendar width={20} height={15} />}
+            />
+          </TouchableOpacity>
           {/**
            * Password field with hide or show password  icon
            */}
           <Text style={Styles.inputTitleStyle}>Password</Text>
-          <InputWithIcon
+          <Input
             maxLength={10}
             placeholder={'**************'}
             onFocus={() => setIsFocus('password')}
@@ -236,6 +252,7 @@ const SignupSecondStep = ({navigation}) => {
             borderColor={isFocus == 'password' ? '#6DA588' : '#EEF2FB'}
             onChangeText={text => {
               setPassword(text);
+              setPasswordError(false);
             }}
             secureTextEntry={isPasswordSecure ? true : false}
             rightSideIcon={
@@ -252,9 +269,12 @@ const SignupSecondStep = ({navigation}) => {
               )
             }
           />
+          {passwordError ? (
+            <InputErros message={'Please enter your password'} />
+          ) : null}
           {/* Re-type password field with hide or show password  icon */}
           <Text style={Styles.inputTitleStyle}>Re-type password</Text>
-          <InputWithIcon
+          <Input
             maxLength={10}
             placeholder={'**************'}
             onFocus={() => setIsFocus('rePassword')}
@@ -262,6 +282,7 @@ const SignupSecondStep = ({navigation}) => {
             borderColor={isFocus == 'rePassword' ? '#6DA588' : '#EEF2FB'}
             onChangeText={text => {
               setRePassword(text);
+              setRePasswordError(false);
             }}
             secureTextEntry={reTypePasswordSecure ? true : false}
             rightSideIcon={
@@ -278,6 +299,16 @@ const SignupSecondStep = ({navigation}) => {
               )
             }
           />
+          {rePasswordError ? (
+            <InputErros message={'Please retype your password'} />
+          ) : null}
+          {passwordNotMatch ? (
+            <InputErros
+              message={
+                'passwords do not match - please retype and be sure they match'
+              }
+            />
+          ) : null}
           <Text style={styles.policyText}>
             By selecting the next button below to continue the sign-up process,
             I agree to More Pleaze's
@@ -287,12 +318,7 @@ const SignupSecondStep = ({navigation}) => {
             <Text style={{color: '#3781FC'}}>link</Text>).
           </Text>
           <View style={{alignItems: 'center', marginTop: 20}}>
-            <Button
-              title="Next"
-              onPress={() => {
-                navigation.navigate('SignupThirdStep');
-              }}
-            />
+            <Button title="Next" onPress={() => formValidation()} />
           </View>
         </KeyboardAwareScrollView>
       </View>

@@ -1,13 +1,11 @@
 import React from 'react';
-
-/// import navigation file 
+/**
+ * import navigator file
+ */
 import AppNavigation from './src/Navigation/AppNavigation';
 
 const App = () => {
-  return (
-    <AppNavigation />
-
-  );
-}
+  return <AppNavigation />;
+};
 
 export default App;

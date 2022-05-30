@@ -19,15 +19,15 @@ import OTPInputView from '@twotalltotems/react-native-otp-input';
 
 const SignupFourthStep = ({navigation}) => {
   const [otp, setOtp] = useState();
-  const [time, setTime] = useState(300);
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setTime(seconds => seconds - 1);
-  //   }, 1000);
-
-  //   return () => clearInterval(interval);
-  // }, []);
-
+  const [time, setTime] = useState(10);
+  useEffect(() => {
+    if (time > 0) {
+      setTimeout(() => {
+        setTime(time - 1);
+      }, 1000);
+    }
+  }, [time]);
+  console.log(time, 'time');
   const getMinutesFromSeconds = time => {
     if (time > 0) {
       const minutes = time >= 60 ? Math.floor(time / 60) : 0;
@@ -54,7 +54,7 @@ const SignupFourthStep = ({navigation}) => {
           <OTPInputView
             style={{width: '80%', height: 100}}
             pinCount={6}
-            placeholderCharacter={'*'}
+            placeholderCharacter={'.'}
             placeholderTextColor="#242424"
             autoFocusOnLoad
             codeInputFieldStyle={styles.underlineStyleBase}

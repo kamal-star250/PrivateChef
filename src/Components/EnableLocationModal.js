@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 /**
  *  All custome components and styling are imported here
  */
-import Button from './Button';
+import {Button} from './Button';
 import {Fonts} from './Fonts';
 /**
  * All SVG icon's are imported here
@@ -26,7 +26,7 @@ const EnableLocationModal = ({modalState, closeModal}) => {
           <Text style={styles.textStyle}>
             To share your location, please enable on your phone or device
           </Text>
-          <View style={{width: '50%', marginTop: 20}}>
+          <View style={{width: '50%', marginTop: 10}}>
             <Button title="Enable now" onPress={closeModal} />
           </View>
         </View>
