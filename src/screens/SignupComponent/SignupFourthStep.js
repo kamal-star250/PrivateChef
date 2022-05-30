@@ -6,7 +6,6 @@ import {
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
-import CountDown from 'react-native-countdown-component';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 /**
  *  All custome components and styling are imported here
@@ -19,7 +18,11 @@ import OTPInputView from '@twotalltotems/react-native-otp-input';
 
 const SignupFourthStep = ({navigation}) => {
   const [otp, setOtp] = useState();
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(300);
+
+  /**
+   *
+   */
   useEffect(() => {
     if (time > 0) {
       setTimeout(() => {
@@ -27,7 +30,10 @@ const SignupFourthStep = ({navigation}) => {
       }, 1000);
     }
   }, [time]);
-  console.log(time, 'time');
+
+  /**
+   * getMinutesFromSeconds function is declared to conver time into minutes or seconds
+   */
   const getMinutesFromSeconds = time => {
     if (time > 0) {
       const minutes = time >= 60 ? Math.floor(time / 60) : 0;
@@ -74,9 +80,11 @@ const SignupFourthStep = ({navigation}) => {
             <Text style={styles.notRecieveCodeText}>
               Didn’t received the code?
             </Text>
-            <TouchableOpacity style={{left: 5}}>
-              <Text style={styles.sendAgainText}>Let’s send it again</Text>
-            </TouchableOpacity>
+            {time < 1 ? (
+              <TouchableOpacity style={{left: 5}}>
+                <Text style={styles.sendAgainText}>Let’s send it again</Text>
+              </TouchableOpacity>
+            ) : null}
           </View>
 
           <View style={styles.buttonContainer}>

@@ -1,5 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+/**
+ *  All custome components and styling are imported here.
+ */
 import {Fonts} from '../../Components/Fonts';
 
 const StepsComponent = ({activeStep}) => {

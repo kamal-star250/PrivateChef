@@ -123,6 +123,7 @@ const SignupFirstStep = ({navigation}) => {
           <Text style={Styles.inputTitleStyle}>Zip</Text>
           <Input
             placeholder="Your zip"
+            keyboardType={'numeric'}
             onFocus={() => setIsFocus('zip')}
             borderWidth={isFocus == 'zip' ? 0.5 : 0}
             borderColor={isFocus == 'zip' ? '#6DA588' : '#EEF2FB'}
